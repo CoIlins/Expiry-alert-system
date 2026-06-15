@@ -7,11 +7,18 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
+use Laravel\Sanctum\HasApiTokens;
+// #[Fillable(['first_name', 
+//             'last_name', 
+//             'email', 
+//             'password', 
+//             'role_id', 
+//             'business_name'
+//             ])]
+// #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -22,6 +29,33 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+    protected $table = 'users';
+
+    protected $primaryKey = 'user_id';
+
+        protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password',
+        'role_id',
+        'business_name',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function role(): BelongsTo{
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
+
+    public function hasRole($role)
+    {
+        return $this->role->role_name === $role;
+    }
+
     protected function casts(): array
     {
         return [
@@ -29,4 +63,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    //     public function getLastTokenUsage()
+    // {
+    //     return $this->tokens->where('last_used_at', '!=', null)->sortByDesc('last_used_at')->first();
+    // }
 }
