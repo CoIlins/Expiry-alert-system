@@ -30,11 +30,6 @@ class RoleSeeder extends Seeder
             $vendor->role_name = 'Vendor';
             $vendor->save();
 
-            // Supplier
-            $supplier = new Role();
-            $supplier->role_name = 'Supplier';
-            $supplier->save();
-
             // Inventory Clerk
             $inventoryClerk = new Role();
             $inventoryClerk->role_name = 'Inventory Clerk';

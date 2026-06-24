@@ -2,7 +2,10 @@
 
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BatchController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,41 +24,30 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:Admin'])
     ->group(function () {
 
-        Route::view(
-            '/admin/dashboard',
-            'admin.dashboard'
-        )->name('admin.dashboard');
+        Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
 
     });
 
-    Route::middleware(['auth', 'role:Vendor'])
+Route::middleware(['auth', 'role:Vendor'])
     ->group(function () {
 
-        Route::view(
-            '/vendor/dashboard',
-            'vendor.dashboard'
-        )->name('vendor.dashboard');
+        Route::view('/vendor/dashboard', 'vendor.dashboard')->name('vendor.dashboard');
 
     });
 
-    Route::middleware(['auth', 'role:Supplier'])
+Route::middleware(['auth', 'role:Supplier'])
         ->group(function () {
 
-            Route::view(
-                '/supplier/dashboard',
-                'supplier.dashboard'
-            )->name('supplier.dashboard');
-
+            Route::view('/supplier/dashboard', 'supplier.dashboard')->name('supplier.dashboard');
         });
-    Route::middleware(['auth', 'role:Inventory Clerk'])
+
+Route::middleware(['auth', 'role:Inventory Clerk'])
         ->group(function () {
 
-            Route::view(
-                '/clerk/dashboard',
-                'clerk.dashboard'
-            )->name('clerk.dashboard');
+Route::get('/clerk/dashboard', [Dashboard::class, 'clerkDashboard'])->name('clerk.dashboard');
+            Route::resource('products', ProductController::class);
+            Route::resource('batches', BatchController::class);
 
         });
-
 
 require __DIR__.'/auth.php';

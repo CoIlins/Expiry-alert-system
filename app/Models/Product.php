@@ -4,40 +4,75 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use HasFactory;
+
+    // Explicitly define the table name matching your database schema
+    protected $table = 'products';
+
+    // Specify the custom primary key column
+    protected $primaryKey = 'product_id';
+
+    /**
+     * The attributes that are mass assignable.
+     * Maps perfectly to your database registration fields.
+     */
     protected $fillable = [
-        'user_id', 'name', 'category',
-        'quantity', 'expiry_date', 'batch_number',
+        'product_name',
+        'category',
+        'description'
     ];
 
-    protected $casts = [
-        'expiry_date' => 'date',
-    ];
 
-    // Relationships
-    public function owner()
+    /**
+     * RELATIONSHIP: A Product can have many tracking Batches.
+     * Maps to PRODUCTS ||--o{ BATCHES
+     */
+    public function batches()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasMany(Batch::class, 'product_id', 'product_id');
     }
 
-    // Scopes — reusable query filters
-    public function scopeExpired($query)
+    /**
+     * RELATIONSHIP: A Product can trigger multiple Expiry Notifications.
+     * Maps to PRODUCTS ||--o{ NOTIFICATIONS
+     */
+    public function notifications()
     {
-        return $query->where('expiry_date', '<', Carbon::today());
+        return $this->hasMany(Notification::class, 'product_id', 'product_id');
     }
 
-    public function scopeExpiringSoon($query, $days = 30)
+
+    /**
+     * RELATIONSHIP: A Product can qualify for various dynamic Vendor Markdown Discounts.
+     * Maps to PRODUCTS ||--o{ DISCOUNTS
+     */
+    public function discounts()
     {
-        return $query->whereBetween('expiry_date', [
-            Carbon::today(),
-            Carbon::today()->addDays($days),
-        ]);
+        return $this->hasMany(Discount::class, 'product_id', 'product_id');
     }
 
-    public function scopeValid($query)
+    /**
+     * RELATIONSHIP: A Product can appear across multiple transaction Invoice Items.
+     * Maps to PRODUCTS ||--o{ INVOICE_ITEMS
+     */
+    public function invoiceItems()
     {
-        return $query->where('expiry_date', '>=', Carbon::today());
+        return $this->hasMany(InvoiceItems::class, 'product_id', 'product_id');
+    }
+
+    /**
+     * RELATIONSHIP: A Product can receive system-generated handling Recommendations.
+     * Maps to PRODUCTS ||--o{ RECOMMENDATIONS
+     */
+    public function recommendations()
+    {
+        return $this->hasMany(Recommendation::class, 'product_id', 'product_id');
     }
 }

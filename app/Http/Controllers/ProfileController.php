@@ -28,9 +28,15 @@ class ProfileController extends Controller
     {
         $request->user()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+            // 2. Explicitly map your new custom fields to the user instance
+            $request->user()->first_name = $request->validated('first_name');
+            $request->user()->last_name = $request->validated('last_name');
+            $request->user()->business_name = $request->validated('business_name');
+
+            // 3. Reset email verification if the email changed (Breeze default behavior)
+            if ($request->user()->isDirty('email')) {
+                $request->user()->email_verified_at = null;
+            }
 
         $request->user()->save();
 

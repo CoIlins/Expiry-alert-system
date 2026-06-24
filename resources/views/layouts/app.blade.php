@@ -12,23 +12,32 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased min-h-screen flex flex-col bg-gray-100">
+    <body class="font-sans antialiased bg-gray-100">
 
-        @include('layouts.navigation')
+        <div class="flex h-screen overflow-hidden">
+            
+            @include('layouts.sidebar')
 
-        @isset($header)
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endisset
+            <div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+                
+                @include('layouts.navigation')
 
-        <main class="flex-1">
-            {{ $slot }}
-        </main>
+                @isset($header)
+                    <header class="bg-white shadow-sm border-b border-gray-200">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endisset
 
-        @include('layouts.footer')
+                <main class="flex-1 p-6 max-w-7xl w-full mx-auto">
+                    {{ $slot }}
+                </main>
+
+                @include('layouts.footer')
+                
+            </div>
+        </div>
 
     </body>
 </html>

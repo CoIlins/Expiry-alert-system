@@ -8785,6 +8785,7 @@
         "filp/whoops",
         "hamcrest/hamcrest-php",
         "laravel/agent-detector",
+        "laravel/breeze",
         "laravel/pail",
         "laravel/pao",
         "laravel/pint",
