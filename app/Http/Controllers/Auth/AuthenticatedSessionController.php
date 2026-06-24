@@ -38,9 +38,6 @@ class AuthenticatedSessionController extends Controller
             case 'Vendor':
                 return redirect()->route('vendor.dashboard');
 
-            case 'Supplier':
-                return redirect()->route('supplier.dashboard');
-
             case 'Inventory Clerk':
                 return redirect()->route('clerk.dashboard');
 
