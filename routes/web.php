@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('clerk.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,16 +35,12 @@ Route::middleware(['auth', 'role:Vendor'])
 
     });
 
-Route::middleware(['auth', 'role:Supplier'])
-        ->group(function () {
 
-            Route::view('/supplier/dashboard', 'supplier.dashboard')->name('supplier.dashboard');
-        });
 
 Route::middleware(['auth', 'role:Inventory Clerk'])
         ->group(function () {
 
-Route::get('/clerk/dashboard', [Dashboard::class, 'clerkDashboard'])->name('clerk.dashboard');
+            Route::get('/clerk/dashboard', [Dashboard::class, 'clerkDashboard'])->name('clerk.dashboard');
             Route::resource('products', ProductController::class);
             Route::resource('batches', BatchController::class);
 

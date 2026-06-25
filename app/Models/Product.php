@@ -28,7 +28,7 @@ class Product extends Model
         'clerk_id',
         'product_name',
         'category',
-        'description'
+        'price'
     ];
 
 
