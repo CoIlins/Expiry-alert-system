@@ -23,11 +23,11 @@
             <form action="{{ route('products.index') }}" method="GET" class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
                 
                 <div class="relative flex-1 max-w-xl">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search products " class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search products " class="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-black-500 focus:border-black-500 transition">
                 </div>
 
                 <div class="flex flex-wrap items-center gap-2 justify-end">
-                    <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white font-medium text-sm rounded-lg hover:bg-indigo-700 font-semibold transition shadow-sm">
+                    <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white font-medium text-sm rounded-lg hover:bg-black-700 font-semibold transition shadow-sm">
                          <i data-lucide="Search" class="w-4 h-4"> </i> Search
                     </button>
                     <a href="{{ route('products.index') }}" class=" flex items-center gap-2 p-2 bg-cyan-600 text-white text-sm font-semibold rounded-lg hover:bg-cyan-800 transition shadow-sm" title="Reset search bar">

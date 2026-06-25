@@ -19,22 +19,23 @@ class ProductController extends Controller
         $query = Product::query();
 
         if ($request->has('search') && !empty($search)) {
-            // Validate search query to be safe alphanumeric with spaces
+
             $request->validate([
-                'search' => 'nullable|string|regex:/^[a-zA-Z0-9\s\-]+$/',
+                'search' => 'nullable|string|regex:/^[a-zA-Z0-9\s\-\.]/',
             ]);
 
             $query->where(function($q) use ($search) {
                 $q->where('product_name', 'like', "%{$search}%")
-                  ->orWhere('category', 'like', "%{$search}%");
+                ->orWhere('category', 'like', "%{$search}%")
+                ->orWhere('price', 'like', "%{$search}%"); // Added price searching support
             });
         }
 
-        // Paginate results matching your exact specification (10 items per page)
-        $products = Product::all();
+        // Displays oldest records first (Chronological Order)
+        $products = $query->oldest('product_id')->get();
 
         return view('products.index', compact('products'));
-    }
+}
 
     /**
      * Show the form for creating a new resource.

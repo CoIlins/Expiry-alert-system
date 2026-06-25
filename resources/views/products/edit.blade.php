@@ -46,11 +46,11 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-2 justify-end border-t border-gray-200 bg-gray-50 px-6 py-4">
-                    <a href="{{ route('products.index') }}" class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition shadow-sm">
+                <div class="flex items-center gap-2 justify-between border-t border-gray-200 bg-gray-50 px-6 py-4">
+                    <a href="{{ route('products.index') }}" class="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 bg-cyan-500 text-sm font-medium text-white hover:bg-cyan-600 transition shadow-sm">
                         <i data-lucide="arrow-left" class="w-4 h-4"> </i> Back
                     </a>
-                    <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-amber-600 text-white font-semibold text-sm rounded-lg hover:bg-amber-700 transition shadow-sm">
+                    <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white font-semibold text-sm rounded-lg hover:bg-amber-600 transition shadow-sm">
                         <i data-lucide="send" class="w-4 h-4"> </i> Submit
                     </button>
                 </div>
