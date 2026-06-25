@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo ;
 
 class Product extends Model
 {
@@ -24,6 +25,7 @@ class Product extends Model
      * Maps perfectly to your database registration fields.
      */
     protected $fillable = [
+        'clerk_id',
         'product_name',
         'category',
         'description'
@@ -38,7 +40,10 @@ class Product extends Model
     {
         return $this->hasMany(Batch::class, 'product_id', 'product_id');
     }
-
+    public function clerk(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'clerk_id', 'user_id');
+    }
     /**
      * RELATIONSHIP: A Product can trigger multiple Expiry Notifications.
      * Maps to PRODUCTS ||--o{ NOTIFICATIONS
