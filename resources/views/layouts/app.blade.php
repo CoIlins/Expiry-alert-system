@@ -12,6 +12,7 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
+
     <body class="font-sans antialiased bg-gray-100">
 
         <div class="flex h-screen overflow-hidden">
@@ -38,6 +39,10 @@
                 
             </div>
         </div>
+        <script src="https://unpkg.com/lucide@latest"></script>
 
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

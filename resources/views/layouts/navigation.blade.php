@@ -5,10 +5,10 @@
 
                 <!-- Logo / App Name -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="text-xl font-bold text-indigo-600">
-                        {{ config('app.name', 'Expiry Tracking System') }}
+                    <a href="" class="text-xl font-bold text-indigo-600">
+                        {{ config('app.name', 'Expiry Alert System') }}
                     </a>
-                </div>
+                </div> 
 
 
 
