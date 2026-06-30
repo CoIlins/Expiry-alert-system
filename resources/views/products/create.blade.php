@@ -50,7 +50,7 @@
                         <i data-lucide="arrow-left" class="w-4 h-4"> </i> Back
                     </a>
                     <button type="submit" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-600 text-white font-semibold text-sm rounded-lg hover:bg-amber-700 transition shadow-sm">
-                        <i data-lucide="send" class="w-4 h-4"> </i> Submit
+                        <i data-lucide="send" class="w-4 h-4"> </i> Save product
                     </button>
                 </div>
             </form>

@@ -12,7 +12,7 @@ class StoreBatchRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,11 @@ class StoreBatchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'product_id'        => 'required|exists:products,product_id',
+            'quantity'          => 'required|integer|min:1',
+            'manufacture_date'  => 'required|date',
+            'expiry_date'       => 'required|date',
         ];
+       
     }
 }
