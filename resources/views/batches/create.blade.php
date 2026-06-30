@@ -44,9 +44,9 @@
 
                 <div class="flex items-center justify-end pt-4 border-t border-gray-100 flex gap-2 justify-between">
                     <a href="{{ route('batches.index') }}" class=" flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg hover:bg-green-700">
-                        <i data-lucide="arrow-left" class="w-4 h-4"> </i> Back</a>
+                        <i data-lucide="arrow-left" class="w-5 h-5"> </i> Back</a>
                     <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg hover:bg-indigo-700">
-                        <i data-lucide="send" class="w-4 h-4"> </i> Save batch
+                        <i data-lucide="send" class="w-5 h-5"> </i> Save batch
                 </div>
             </form>
         </div>

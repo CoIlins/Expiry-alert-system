@@ -28,13 +28,13 @@
 
                 <div class="flex flex-wrap items-center gap-2 justify-end">
                     <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white font-medium text-sm rounded-lg hover:bg-black-700 font-semibold transition shadow-sm">
-                         <i data-lucide="Search" class="w-4 h-4"> </i> Search
+                         <i data-lucide="Search" class="w-5 h-5"> </i> Search
                     </button>
                     <a href="{{ route('products.index') }}" class=" flex items-center gap-2 p-2 bg-cyan-600 text-white text-sm font-semibold rounded-lg hover:bg-cyan-800 transition shadow-sm" title="Reset search bar">
-                        <i data-lucide="brush-cleaning" class="w-4 h-4"> </i> Clear
+                        <i data-lucide="brush-cleaning" class="w-5 h-5"> </i> Clear
                     </a>
                     <a href="{{ route('products.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-600 text-white font-semibold text-sm rounded-lg hover:bg-amber-700 transition shadow-sm">
-                        <i data-lucide="plus" class="w-4 h-4"> </i> Add product
+                        <i data-lucide="plus" class="w-5 h-5"> </i> Add product
                     </a>
                 </div>
             </form>
@@ -90,12 +90,12 @@
                                         class="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-700 transition shadow-sm" 
                                         title="View Details">
 
-                                            <i data-lucide="binoculars" class="w-4 h-4"></i>
+                                            <i data-lucide="binoculars" class="w-5 h-5"></i>
 
                                         </a>
 
                                         <a href="{{ route('products.edit', $product->product_id) }}" class="p-2 bg-green-400 text-white rounded hover:bg-green-500 transition shadow-sm" title="Edit Attributes">
-                                            <i data-lucide="square-pen" class="w-4 h-4"></i>
+                                            <i data-lucide="square-pen" class="w-5 h-5"></i>
                                         </a>
 
                                         <form action="{{ route('products.destroy', $product->product_id) }}" method="POST" class="inline m-0 p-0" onsubmit="return confirm('Are you sure you want to delete this product?');">
@@ -105,7 +105,7 @@
                                                     class="p-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition shadow-sm" 
                                                     title="Delete Product">
 
-                                                <i data-lucide="circle-x" class="w-4 h-4"></i>
+                                                <i data-lucide="circle-x" class="w-5 h-5"></i>
                                             </button>
                                         </form>
                                     </div>

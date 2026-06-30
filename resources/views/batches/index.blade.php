@@ -20,13 +20,13 @@
                 </div>
                 <div class="flex flex-wrap items-center gap-2 justify-end">
                     <button type="submit" class="flex items-center gap-2 px-4 py-2 bg-amber-600 text-white text-sm font-semibold rounded-lg hover:bg-amber-700 transition shadow-sm">
-                         <i data-lucide="search" class="w-4 h-4"></i> Search
+                         <i data-lucide="search" class="w-5 h-5"></i> Search
                     </button>
                     <a href="{{ route('batches.index') }}" class="flex items-center gap-2 p-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition shadow-sm">
-                        <i data-lucide="eraser" class="w-4 h-4"></i> Clear
+                        <i data-lucide="eraser" class="w-5 h-5"></i> Clear
                     </a>
                     <a href="{{ route('batches.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 bg-green-600 text-white font-semibold text-sm rounded-lg hover:bg-green-700 transition shadow-sm">
-                        <i data-lucide="square-plus" class="w-4 h-4"></i> Add Batch
+                        <i data-lucide="square-plus" class="w-5 h-5"></i> Add Batch
                     </a>
                 </div>
             </form>
@@ -64,7 +64,7 @@
                                 <td class="px-6 py-4 font-semibold">{{ $batch->manufacture_date->format('Y-m-d') }}</td>
                                 <td class="px-6 py-4 font-semibold">{{ $batch->expiry_date->format('Y-m-d') }}</td>
                                 <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-bold 
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-xl text-sm font-bold 
                                         {{ $batch->computed_status === 'active' ? 'bg-green-50 text-green-700 border border-green-200' : '' }}
                                         {{ $batch->computed_status === 'expiring_soon' ? 'bg-amber-50 text-amber-700 border border-amber-200' : '' }}
                                         {{ $batch->computed_status === 'expired' ? 'bg-rose-50 text-rose-700 border border-rose-200' : '' }}
@@ -83,13 +83,13 @@
                                 <td class="px-6 py-4 text-center whitespace-nowrap">
                                     <div class="inline-flex items-center justify-center gap-1">
                                         <a href="{{ route('batches.show', $batch->batch_id) }}" class="p-2 bg-green-500 text-white rounded hover:bg-green-700 transition flex items-center justify-center">
-                                            <i data-lucide="telescope" class="w-4 h-4"></i></a>
+                                            <i data-lucide="telescope" class="w-5 h-5"></i></a>
                                         <a href="{{ route('batches.edit', $batch->batch_id) }}" class="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-700 transition flex items-center justify-center">
-                                            <i data-lucide="pencil" class="w-4 h-4"></i></a>
+                                            <i data-lucide="pencil" class="w-5 h-5"></i></a>
                                         <form action="{{ route('batches.destroy', $batch->batch_id) }}" method="POST" class="inline" onsubmit="return confirm('Delete this batch record?');">
                                             @csrf @method('DELETE')
                                             <button type="submit" class="p-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition flex items-center justify-center">
-                                                <i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                                <i data-lucide="trash-2" class="w-5 h-5"></i></button>
                                         </form>
                                     </div>
                                 </td>

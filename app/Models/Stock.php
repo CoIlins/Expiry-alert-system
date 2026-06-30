@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-class Stocks extends Model
+class Stock extends Model
 {
     /** @use HasFactory<\Database\Factories\StocksFactory> */
     use HasFactory;

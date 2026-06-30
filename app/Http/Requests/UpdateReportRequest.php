@@ -23,7 +23,7 @@ class UpdateReportRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+   
         ];
     }
 }
