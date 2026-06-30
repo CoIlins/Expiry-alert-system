@@ -80,4 +80,15 @@ class Product extends Model
     {
         return $this->hasMany(Recommendation::class, 'product_id', 'product_id');
     }
+    protected static function booted(): void
+    {
+        static::updated(function (Product $product) {
+            if ($product->wasChanged('price')) {
+                foreach ($product->batches as $batch) {
+                    $batch->total_price = $product->price * $batch->quantity;
+                    $batch->save();
+                }
+            }
+        });
+    }
 }
