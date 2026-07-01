@@ -10,9 +10,26 @@ use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
-public function index()
+public function index(Request $request)
     {
-        $stocks = Stock::with(['product', 'clerk'])->get();
+        $search = $request->input('search');
+
+        $query = Stock::with(['product', 'clerk']);
+
+
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+
+                $q->whereHas('product', function ($productQuery) use ($search) {
+                    $productQuery->where('product_name', 'like', "%{$search}%");
+                })
+                ->orWhere('status', 'like', "%{$search}%")
+            
+                ->orWhere('current_stock_level', 'like', "%{$search}%");
+            });
+        }
+
+        $stocks = $query->get();
         return view('stocks.index', compact('stocks'));
     }
 
