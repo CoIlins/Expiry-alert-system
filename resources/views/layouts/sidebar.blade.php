@@ -35,13 +35,9 @@
                    class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('products.create') ? 'bg-slate-800 text-indigo-400 font-bold border-l-4 border-indigo-500 pl-2' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     Add Product
                 </a>
-<<<<<<< Updated upstream
-=======
-                
-            
-                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Batch Management
-                
-                </span>
+
+                <span class="px-3 text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2 mt-4">Batch Management</span>
+
                 <a href="{{ route('batches.index') }}" 
                    class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('batches.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     View Batches
@@ -51,29 +47,6 @@
                    class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('batches.create') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     Add Batch
                 </a>
-
-
-                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Stock Management
-
-                </span>
-                <a href="{{ route('stocks.index') }}" 
-                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('stocks.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
-                    View Stocks
-                </a>
-                
-                <a href="{{ route('stocks.create') }}" 
-                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('stocks.create') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
-                    Add Stock Thresholds
-                </a>
-                <span class="px-3 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Reports
-                
-                </span>
-                <a href="{{ route('reports.inventory') }}" 
-                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('reports.inventory') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
-                    Inventory report
-                </a>
-                
->>>>>>> Stashed changes
             </div>
         @endif
 
