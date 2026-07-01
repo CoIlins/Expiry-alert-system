@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -40,6 +41,7 @@ class User extends Authenticatable
         'password',
         'role_id',
         'business_name',
+        'vendor_id',
     ];
 
     protected $hidden = [
@@ -51,6 +53,18 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'role_id');
     }
 
+        public function clerks(): HasMany
+    {
+        return $this->hasMany(User::class, 'vendor_id', 'user_id');
+    }
+
+    /**
+     * A Clerk belongs to exactly one Vendor.
+     */
+    public function vendor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'vendor_id', 'user_id');
+    }
     public function hasRole($role)
     {
         return $this->role->role_name === $role;

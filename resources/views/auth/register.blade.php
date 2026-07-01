@@ -29,16 +29,17 @@
             </div>
 
         <!-- Role -->
-            <div class="mt-4">
+        <div class="mt-4">
             <x-input-label for="role_id" :value="__('Role')" />
 
             <select name="role_id"
                     id="role_id"
-                    class="block mt-1 w-full border-gray-300 rounded-md shadow-sm">
-                <option value="">Select Role</option>
+                    onchange="toggleVendorField()"
+                    class="text-sm block mt-1 w-full border-gray-300 rounded-md shadow-sm">
+                <option class="text-sm" value="">Select Role</option>
 
                 @foreach($roles as $role)
-                    <option value="{{ $role->role_id }}"
+                    <option class="text-sm" value="{{ $role->role_id }}"
                         {{ old('role_id') == $role->role_id ? 'selected' : '' }}>
                         {{ $role->role_name }}
                     </option>
@@ -46,10 +47,48 @@
             </select>
 
             <x-input-error :messages="$errors->get('role_id')" class="mt-2" />
-            </div>
+        </div>
+        <div id="vendor_select_container" class="mt-4 hidden">
+                <label for="vendor_id" class="block text-sm font-medium text-gray-700">Vendor Name</label>
+                <select id="vendor_id" name="vendor_id" class="block mt-1 w-full text-sm rounded-md shadow-sm border-gray-300">
+                    <option class="text-sm"value="">-- Choose Your Vendor --</option>
+                    @foreach($vendors as $vendor)
+                        <option value="{{ $vendor->user_id }}">
+                            {{ $vendor->first_name }} {{ $vendor->last_name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <script>
+            function toggleVendorField() {
+                const roleSelect = document.getElementById('role_id');
+                const container = document.getElementById('vendor_select_container');
+                const businessContainer = document.getElementById('business_name_container');
+                
+                if (!roleSelect || !roleSelect.selectedOptions[0]) return;
+                
+                const selectedOption = roleSelect.selectedOptions[0];
+                const roleName = selectedOption.getAttribute('data-name') || '';
+
+                // Safely checks if the ID is 3 or the role name contains "clerk"
+                if (roleSelect.value === '3' || roleName.includes('clerk')) {
+                    container.classList.remove('hidden');
+                    if (businessContainer) businessContainer.classList.add('hidden');
+                } else {
+                    container.classList.add('hidden');
+                    if (businessContainer) businessContainer.classList.remove('hidden');
+                }
+            }
+
+            // This ensures the dropdown displays properly if validation fails and reloads the page
+            document.addEventListener('DOMContentLoaded', function() {
+                toggleVendorField();
+            });
+        </script>
 
         <!-- Business name-->
-        <div class="mt-4">
+        <div class="mt-4" id="business_name_container">
             <x-input-label for="business_name" :value="__('Business Name')" />
 
             <x-text-input id="business_name"

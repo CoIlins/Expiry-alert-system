@@ -24,8 +24,9 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
     $roles = Role::query()->where('role_id', '!=', 1)->get();
+    $vendors = User::query()->where('role_id', 2)->get(['user_id', 'first_name', 'last_name']);
 
-    return view('auth.register', compact('roles'));
+    return view('auth.register', compact('vendors', 'roles'));
     }
 
     /**
@@ -47,16 +48,28 @@ class RegisteredUserController extends Controller
                 ],
                 'role_id'    => ['required', 'exists:roles,role_id', 'not_in:1'],
                 'password'   => ['required', 'confirmed', Rules\Password::defaults()],
-                'business_name' => ['nullable', 'string', 'max:255'],
+                'business_name' => ['required_if:role_id,2', 'nullable', 'string', 'max:255'],
+                'vendor_id' => ['nullable', 'required_if:role_id,3', 'exists:users,user_id'],
         ]);
 
+        $businessName = null;
+
+        if ($request->role_id == 2) {
+            // If they are a Vendor, use the business name they typed into the form
+            $businessName = $request->business_name;
+        } elseif ($request->role_id == 3) {
+            // If they are a Clerk, fetch their selected employer's business name from the database
+            $employer = User::findOrFail($request->vendor_id);
+            $businessName = $employer->business_name;
+        }
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $request->role_id,
-            'business_name' => $request->business_name,
+            'business_name' => $businessName,
+            'vendor_id' => $request->role_id == 3 ? $request->vendor_id : null,
         ]);
 
         event(new Registered($user));
