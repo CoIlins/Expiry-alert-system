@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\Vendor\StaffManagementController;
 use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard;
@@ -34,6 +35,8 @@ Route::middleware(['auth', 'role:Vendor'])
     ->group(function () {
 
         Route::view('/vendor/dashboard', 'vendor.dashboard')->name('vendor.dashboard');
+        Route::get('/vendor/staff', [StaffManagementController::class, 'index'])->name('vendor.staff.index');
+        Route::get('/vendor/staff/{clerk}/logs', [StaffManagementController::class, 'showLog'])->name('vendor.staff.logs');
 
     });
 

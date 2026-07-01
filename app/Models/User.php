@@ -65,6 +65,18 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class, 'vendor_id', 'user_id');
     }
+
+    public function batches(): HasMany
+    {
+        return $this->hasMany(Batch::class, 'user_id', 'user_id');
+    }
+
+    // Clerk has modified many stocks
+    public function stocks(): HasMany
+    {
+        return $this->hasMany(Stock::class, 'user_id', 'user_id');
+    }
+
     public function hasRole($role)
     {
         return $this->role->role_name === $role;
