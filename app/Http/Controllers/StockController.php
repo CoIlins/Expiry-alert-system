@@ -41,7 +41,7 @@ public function index()
     public function show(Stock $stock)
     {
         $stock->load(['product.batches', 'clerk']);
-        return view('stocks.show', compact('stocks'));
+        return view('stocks.show', compact('stock'));
     }
 
     public function edit(Stock $stock)
