@@ -96,9 +96,13 @@
                                 <td class="px-6 py-4 text-center whitespace-nowrap">
                                     <div class="inline-flex items-center justify-center gap-1">
                                         <a href="{{ route('admin.users.show', $user->user_id) }}"
-                                           class="p-2 bg-indigo-50 text-indigo-600 border border-indigo-200 rounded hover:bg-indigo-100 transition shadow-sm"
+                                           class="inline-flex items-center justify-center p-2 rounded transition shadow-sm"
+                                           style="background-color: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;"
                                            title="View User">
-                                            <i data-lucide="binoculars" class="w-4 h-4"></i>
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                                <path d="M5.5 6.5A1.5 1.5 0 0 0 4 8v5a2.5 2.5 0 1 0 5 0V8a1.5 1.5 0 0 0-1.5-1.5h-2Zm0 8A1.5 1.5 0 0 1 4 13v-1h4v1a1.5 1.5 0 0 1-2.5 1.5ZM12.5 6.5A1.5 1.5 0 0 0 11 8v5a2.5 2.5 0 1 0 5 0V8a1.5 1.5 0 0 0-1.5-1.5h-2Zm0 8A1.5 1.5 0 0 1 11 13v-1h4v1a1.5 1.5 0 0 1-2.5 1.5Z" />
+                                                <path d="M8 8h4v2H8V8ZM5.75 4.5a.75.75 0 0 1 .75-.75h1.25A2.25 2.25 0 0 1 10 6a2.25 2.25 0 0 1 2.25-2.25h1.25a.75.75 0 0 1 0 1.5h-1.25A.75.75 0 0 0 11.5 6v1h-3V6a.75.75 0 0 0-.75-.75H6.5a.75.75 0 0 1-.75-.75Z" />
+                                            </svg>
                                         </a>
 
                                         @if($user->user_id !== Auth::id())
@@ -106,17 +110,21 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                        class="p-2 bg-rose-50 text-rose-600 border border-rose-200 rounded hover:bg-rose-100 transition shadow-sm"
+                                                        class="inline-flex items-center justify-center p-2 bg-rose-500 text-white rounded hover:bg-rose-600 transition shadow-sm"
                                                         title="Delete User">
-                                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M8.5 3a1.5 1.5 0 0 0-1.415 1H4.75a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5h-2.335A1.5 1.5 0 0 0 11.5 3h-3ZM6 7a.75.75 0 0 1 .75.75l.35 7a.75.75 0 0 0 .75.75h4.3a.75.75 0 0 0 .75-.75l.35-7a.75.75 0 0 1 1.5.08l-.35 7A2.25 2.25 0 0 1 12.15 17h-4.3a2.25 2.25 0 0 1-2.247-2.17l-.35-7A.75.75 0 0 1 6 7Zm2.75 1a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5A.75.75 0 0 1 8.75 8Zm2.5 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                                                    </svg>
                                                 </button>
                                             </form>
                                         @else
                                             <button type="button"
-                                                    class="p-2 bg-gray-300 text-gray-500 rounded cursor-not-allowed"
+                                                    class="inline-flex items-center justify-center p-2 bg-gray-300 text-gray-500 rounded cursor-not-allowed"
                                                     title="You cannot delete your own account"
                                                     disabled>
-                                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M8.5 3a1.5 1.5 0 0 0-1.415 1H4.75a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5h-2.335A1.5 1.5 0 0 0 11.5 3h-3ZM6 7a.75.75 0 0 1 .75.75l.35 7a.75.75 0 0 0 .75.75h4.3a.75.75 0 0 0 .75-.75l.35-7a.75.75 0 0 1 1.5.08l-.35 7A2.25 2.25 0 0 1 12.15 17h-4.3a2.25 2.25 0 0 1-2.247-2.17l-.35-7A.75.75 0 0 1 6 7Zm2.75 1a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5A.75.75 0 0 1 8.75 8Zm2.5 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                                                </svg>
                                             </button>
                                         @endif
                                     </div>

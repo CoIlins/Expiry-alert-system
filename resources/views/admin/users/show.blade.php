@@ -68,7 +68,9 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="inline-flex items-center gap-1.5 px-3 py-2 bg-rose-500 text-white text-sm font-bold rounded-lg hover:bg-rose-600 transition shadow-sm">
-                            <i data-lucide="trash-2" class="w-3.5 h-3.5 text-white"></i>
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8.5 3a1.5 1.5 0 0 0-1.415 1H4.75a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5h-2.335A1.5 1.5 0 0 0 11.5 3h-3ZM6 7a.75.75 0 0 1 .75.75l.35 7a.75.75 0 0 0 .75.75h4.3a.75.75 0 0 0 .75-.75l.35-7a.75.75 0 0 1 1.5.08l-.35 7A2.25 2.25 0 0 1 12.15 17h-4.3a2.25 2.25 0 0 1-2.247-2.17l-.35-7A.75.75 0 0 1 6 7Zm2.75 1a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5A.75.75 0 0 1 8.75 8Zm2.5 0a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0v-5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                            </svg>
                             Delete User
                         </button>
                     </form>

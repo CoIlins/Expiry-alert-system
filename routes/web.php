@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [Dashboard::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    Route::view('/admin/dashboard', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('/admin/dashboard', [Dashboard::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users.index');
     Route::get('/admin/users/{user}', [AdminUserController::class, 'show'])->name('admin.users.show');
     Route::delete('/admin/users/{user}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');

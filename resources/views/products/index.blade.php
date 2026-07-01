@@ -98,7 +98,7 @@
                                 
                                 <td class="px-6 py-4 text-center whitespace-nowrap">
                                     <div class="inline-flex items-center justify-center gap-1">
-                                        <a href="{{ route('products.show', $product->product_id) }}" class="p-2 bg-cyan-400 text-white rounded hover:bg-cyan-500 transition shadow-sm" title="View Details">
+                                        <a href="{{ route('products.show', $product->product_id) }}" class="inline-flex items-center justify-center p-2 rounded transition shadow-sm" style="background-color: #ecfeff; border: 1px solid #67e8f9; color: #0e7490;" title="View Details">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
                                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
