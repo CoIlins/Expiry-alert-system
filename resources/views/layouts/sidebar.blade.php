@@ -35,15 +35,69 @@
                    class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('products.create') ? 'bg-slate-800 text-indigo-400 font-bold border-l-4 border-indigo-500 pl-2' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     Add Product
                 </a>
+<<<<<<< Updated upstream
+=======
+                
+            
+                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Batch Management
+                
+                </span>
+                <a href="{{ route('batches.index') }}" 
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('batches.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    View Batches
+                </a>
+                
+                <a href="{{ route('batches.create') }}" 
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('batches.create') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    Add Batch
+                </a>
+
+
+                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Stock Management
+
+                </span>
+                <a href="{{ route('stocks.index') }}" 
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('stocks.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    View Stocks
+                </a>
+                
+                <a href="{{ route('stocks.create') }}" 
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('stocks.create') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    Add Stock Thresholds
+                </a>
+                <span class="px-3 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Reports
+                
+                </span>
+                <a href="{{ route('reports.inventory') }}" 
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('reports.inventory') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    Inventory report
+                </a>
+                
+>>>>>>> Stashed changes
             </div>
         @endif
 
         @if(Auth::user()->role_id == 1)
             <div class="space-y-1">
-                <span class="px-3 text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">🛡️ Administration</span>
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
+                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Administration</span>
+
+                <a href="{{ route('profile.edit') }}"
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('profile.edit') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
+                    Profile Settings
+                </a>
+
+                <a href="{{ route('admin.users.index') }}"
+                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('admin.users.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     User Management
                 </a>
+            </div>
+            <div class="space-y-1">
+                <span class="px-2 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Inventory</span>
+
+                <span title="Inventory routes are currently assigned to inventory clerks"
+                      class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg text-slate-600 cursor-not-allowed">
+                    View Reports
+                </span>
             </div>
         @endif
 
