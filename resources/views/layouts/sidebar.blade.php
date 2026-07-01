@@ -60,11 +60,6 @@
                 <span class="px-3 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Reports
                 
                 </span>
-                <a href="{{ route('reports.inventory') }}" 
-                   class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('batches.index') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
-                    Inventory report
-                </a>
-                
             </div>
         @endif
 
