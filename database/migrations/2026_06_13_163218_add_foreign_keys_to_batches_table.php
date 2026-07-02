@@ -18,15 +18,15 @@ return new class extends Migration
                 ->on('products')
                 ->onDelete('cascade');
 
-            $table->foreign('vendor_id')
-                ->references('user_id')
-                ->on('users')
-                ->onDelete('cascade');
+            // $table->foreign('vendor_id')
+            //     ->references('user_id')
+            //     ->on('users')
+            //     ->onDelete('cascade');
 
-            $table->foreign('supplier_id')
-                ->references('user_id')
-                ->on('users')
-                ->onDelete('cascade');
+            // $table->foreign('supplier_id')
+            //     ->references('user_id')
+            //     ->on('users')
+            //     ->onDelete('cascade');
         });
     }
 

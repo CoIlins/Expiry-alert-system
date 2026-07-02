@@ -86,12 +86,11 @@
                                 
                                 <td class="px-6 py-4 text-center whitespace-nowrap">
                                     <div class="inline-flex items-center justify-center gap-1">
-                                        <a href="{{ route('products.show', $product->product_id) }}" 
-                                        class="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-700 transition shadow-sm" 
-                                        title="View Details">
-
-                                            <i data-lucide="binoculars" class="w-4 h-4"></i>
-
+                                        <a href="{{ route('products.show', $product->product_id) }}" class="p-2 bg-cyan-400 text-white rounded hover:bg-cyan-500 transition shadow-sm" title="View Details">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                            </svg>
                                         </a>
 
                                         <a href="{{ route('products.edit', $product->product_id) }}" class="p-2 bg-green-400 text-white rounded hover:bg-green-500 transition shadow-sm" title="Edit Attributes">

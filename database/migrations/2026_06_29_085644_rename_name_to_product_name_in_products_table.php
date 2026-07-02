@@ -6,26 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            // $table->foreign('supplier_id')
-            //     ->references('user_id')
-            //     ->on('users')
-            //     ->onDelete('cascade');
-});
+            $table->renameColumn('name', 'product_name');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['supplier_id']);
+            $table->renameColumn('product_name', 'name');
         });
     }
 };

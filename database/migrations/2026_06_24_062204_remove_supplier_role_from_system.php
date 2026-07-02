@@ -15,14 +15,14 @@ return new class extends Migration
 
         Schema::table('batches', function (Blueprint $table) {
 
-            $table->dropForeign(['supplier_id']);
-            $table->dropColumn('supplier_id');
+            // $table->dropForeign(['supplier_id']);
+            // $table->dropColumn('supplier_id');
         });
 
 
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['supplier_id']);
-            $table->dropColumn('supplier_id');
+            // $table->dropForeign(['supplier_id']);
+            // $table->dropColumn('supplier_id');
         });
         
         Schema::dropIfExists('return_requests');
