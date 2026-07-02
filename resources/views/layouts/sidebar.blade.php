@@ -10,8 +10,8 @@
                 elseif(Auth::user()->role_id == 3) $dashboardRoute = 'clerk.dashboard';
             @endphp
                 <a href="{{ route($dashboardRoute) }}" 
-                   class="flex items-center px-3 py-1 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs($dashboardRoute) ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100'}}">
-                    Dashboard
+                   class="flex items-center gap-2 px-3 py-1 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs($dashboardRoute) ? 'bg-slate-800/60 text-gray-200 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100'}}">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"> </i> <span>Dashboard</span>
                 </a>
         </div>
 
@@ -57,19 +57,41 @@
                    class="flex items-center px-3 py-2 text-sm font-semibold rounded-lg transition-all {{ request()->routeIs('stocks.create') ? 'bg-slate-800/60 text-indigo-400 font-semibold' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-100' }}">
                     Add Stock Thresholds
                 </a>
-                <span class="px-3 text-sm font-bold text-indigo-500 uppercase tracking-wider block mb-2">Reports
-                
-                </span>
             </div>
         @endif
 
         @if(Auth::user()->role_id == 1)
             <div class="space-y-1">
-                <span class="px-3 text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">🛡️ Administration</span>
+                <span class="px-3 text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">🛡️ Admnistration</span>
                 <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
                     User Management
                 </a>
             </div>
+        @endif
+        @if(Auth::user()->role_id == 2)
+            <div class="space-y-1">
+                <a href="{{ route('vendor.products.index') }}" class="  gap-2 flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
+                     <i data-lucide="carrot" class="w-4 h-4"> </i> <span>Products</span>
+                </a>
+            </div>
+            <div class="space-y-1">
+                <a href="{{ route('vendor.batches.index') }}" class="  gap-2 flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
+                     <i data-lucide="package" class="w-4 h-4"> </i> <span>Batches</span>
+                </a>
+            </div>
+            <div class="space-y-1">
+                <a href="{{ route('vendor.stocks.index') }}" class="  gap-2 flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
+                     <i data-lucide="warehouse" class="w-4 h-4"> </i> <span>Stocks</span>
+                </a>
+            </div>
+            <div class="space-y-1">
+                <span class="px-3 text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Staff Management</span>
+                <a href="{{ route('vendor.staff.index') }}" class="  gap-2 flex items-center px-3 py-2 text-sm font-medium text-slate-400 rounded-lg hover:bg-slate-800 hover:text-slate-100">
+                     <i data-lucide="users-round" class="w-4 h-4"> </i> <span>Staff</span>
+                </a>
+            </div>
+
+
         @endif
 
     </nav>

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\Stocks;
+use App\Models\Stock;
 
 class Batch extends Model
 {
@@ -49,7 +49,7 @@ class Batch extends Model
     {
         // Whenever a batch quantity changes, update the parent stock row
         $syncStock = function ($batch) {
-            $stock = Stocks::where('product_id', $batch->product_id)->first();
+            $stock = Stock::where('product_id', $batch->product_id)->first();
             if ($stock) {
                 $stock->touch(); // Triggers the saving() event inside Stock model automatically
             }

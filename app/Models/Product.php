@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo ;
-
+use Illuminate\Database\Eloquent\Relations\HasOne ;
 class Product extends Model
 {
     use HasFactory;
@@ -43,6 +43,11 @@ class Product extends Model
     public function clerk(): BelongsTo
     {
         return $this->belongsTo(User::class, 'clerk_id', 'user_id');
+    }
+    public function stock(): HasOne
+    {
+        // Maps the 1-to-1 relationship between a Product and its physical Stock status row
+        return $this->hasOne(Stock::class, 'product_id', 'product_id');
     }
     /**
      * RELATIONSHIP: A Product can trigger multiple Expiry Notifications.

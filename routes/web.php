@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\Vendor\StaffManagementController;
+use App\Http\Controllers\Vendor\VendorInventoryController;
 use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard;
@@ -37,6 +38,14 @@ Route::middleware(['auth', 'role:Vendor'])
         Route::view('/vendor/dashboard', 'vendor.dashboard')->name('vendor.dashboard');
         Route::get('/vendor/staff', [StaffManagementController::class, 'index'])->name('vendor.staff.index');
         Route::get('/vendor/staff/{clerk}/logs', [StaffManagementController::class, 'showLog'])->name('vendor.staff.logs');
+        Route::get('/vendor/products/index', [VendorInventoryController::class, 'products'])->name('vendor.products.index');
+        Route::get('/vendor/products/{product}', [VendorInventoryController::class, 'showProduct'])->name('vendor.products.show');
+
+        Route::get('/vendor/batches/index', [VendorInventoryController::class, 'batches'])->name('vendor.batches.index');
+        Route::get('/vendor/batches/{batch}', [VendorInventoryController::class, 'showBatch'])->name('vendor.batches.show');
+
+        Route::get('/vendor/stocks/index', [VendorInventoryController::class, 'stocks'])->name('vendor.stocks.index');
+        Route::get('/vendor/stocks/{stock}', [VendorInventoryController::class, 'showStock'])->name('vendor.stocks.show');
 
     });
 
