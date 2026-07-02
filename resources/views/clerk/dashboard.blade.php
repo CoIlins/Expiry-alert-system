@@ -21,13 +21,13 @@
                 </a>
             </div>
 
-            <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-indigo-500 border border-y-slate-200 border-r-slate-200 max-w-sm">
+            {{-- <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-indigo-500 border border-y-slate-200 border-r-slate-200 max-w-sm">
                 <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Total Products</p>
                 <div class="flex items-baseline gap-2 mt-2">
                     <p class="text-5xl font-black text-gray-800 tracking-tight">{{ $totalProductsCount }}</p>
                     <span class="text-slate-400 text-xs font-medium">items cataloged</span>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

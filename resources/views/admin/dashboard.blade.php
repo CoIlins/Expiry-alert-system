@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
@@ -19,6 +20,9 @@
                     <p class="text-sm text-gray-500">Total Products</p>
                     <p class="text-4xl font-bold text-gray-800 mt-2">{{ number_format($totalProductsCount) }}</p>
                     <p class="text-xs text-gray-400 mt-1">Products in the catalog</p>
+
+         
+
                 </div>
 
                 <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-yellow-400">

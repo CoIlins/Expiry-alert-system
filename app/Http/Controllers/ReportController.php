@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
 use App\Models\Report;
+use App\Models\Batch;
+use App\Models\Product;
+
 
 class ReportController extends Controller
 {
@@ -63,4 +66,26 @@ class ReportController extends Controller
     {
         //
     }
+
+
+    public function inventoryReport()
+    {
+        $batches = Batch::with(['product', 'user'])->get();
+
+        // Calculate macro numbers for the dashboard cards
+        $totalInventoryValue = $batches->sum('total_price');
+        $totalItems = $batches->sum('quantity');
+        
+        $expiredCount = $batches->filter(fn($b) => $b->computed_status === 'expired')->count();
+        $expiringSoonCount = $batches->filter(fn($b) => $b->computed_status === 'expiring_soon')->count();
+
+        return view('reports.inventory', compact(
+            'batches',
+            'totalInventoryValue',
+            'totalItems',
+            'expiredCount',
+            'expiringSoonCount'
+        ));
+    }
+
 }
